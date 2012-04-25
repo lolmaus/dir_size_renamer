@@ -7,6 +7,5 @@ Gem::Specification.new do |s|
   s.authors       = ["Andrey 'lolmaus' Mikhaylov"]
   s.email         = 'lolmaus@gmail.com'
   s.files         = Dir["{lib}/*.rb", "bin/*", "*.md"]
-  s.require_path  = 'lib'
   s.homepage      = "https://github.com/lolmaus/dir_size_renamer"
 end
