@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby
+
+lib = File.expand_path(File.dirname(__FILE__) + '/../lib')
+$LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
+
+require "dir_size_renamer"
+require "slop"
+
+opts = Slop.parse(help: true) do
+  banner "Usage: dir_size_renamer -d <directory> [options]\n"
+  on :d, :directory, "Target directory. dir_size_renamer will process subdirectories within it.",      :argument => :optional
+  on :f, :force,     "Process and re-rename already renamed subdirectories."
+  on :v, :verbose,   "Report results to console."
+  on :u, :undo,      "Derename mode. No calculation is done, sizes are removed from directory names."
+end
+
+if not (opts[:directory] or opts.force? or opts.verbose? or opts.undo?)
+  puts opts.to_s
+elsif not opts.help?
+  if opts.force? and opts.undo?
+    puts "Please choose either undo renaming or force renaming."
+  elsif opts[:directory]
+
+    dir = opts[:directory].gsub("\\","/")
+
+    if Dir.exists?(dir)
+
+      if opts.undo?
+        DirSizeRenamer.new(dir, verbose: opts.verbose?).rename_undo!
+      else
+        DirSizeRenamer.new(dir, verbose: opts.verbose?, rerename: opts.force?).rename!
+      end
+
+    else
+      puts "Target directory does not exist or is inaccessible: " + opts[:directory]
+    end
+  else
+    puts "Directory not specified."
+  end
+end
