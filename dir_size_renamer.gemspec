@@ -10,5 +10,6 @@ Gem::Specification.new do |s|
   s.homepage      = "https://github.com/lolmaus/dir_size_renamer"
   s.bindir        = 'bin'
   s.executables   << 'dir_size_renamer'
-  s.requirements  << "slop" << "chronic_duration"
+  s.add_runtime_dependency "slop"
+  s.add_runtime_dependency "chronic_duration"
 end
