@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name          = 'dir_size_renamer'
-  s.version       = '0.0.2'
+  s.version       = '0.0.3'
   s.date          = '2012-04-25'
   s.summary       = "DirSizeRenamer"
   s.description   = "This console utility lets you rename subdirectories within a specified directory, so that subdirectories' names contain their sizes."
@@ -10,4 +10,5 @@ Gem::Specification.new do |s|
   s.homepage      = "https://github.com/lolmaus/dir_size_renamer"
   s.bindir        = 'bin'
   s.executables   << 'dir_size_renamer'
+  s.requirements  << "slop" << "chronic_duration"
 end
