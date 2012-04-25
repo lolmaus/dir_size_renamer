@@ -8,4 +8,6 @@ Gem::Specification.new do |s|
   s.email         = 'lolmaus@gmail.com'
   s.files         = Dir["{lib}/*.rb", "bin/*", "*.md"]
   s.homepage      = "https://github.com/lolmaus/dir_size_renamer"
+  s.bindir        = 'bin'
+  s.executables   << 'dir_size_renamer'
 end
