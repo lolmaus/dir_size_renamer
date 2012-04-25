@@ -12,5 +12,4 @@ Gem::Specification.new do |s|
   s.executables   << 'dir_size_renamer'
   s.add_runtime_dependency "slop"
   s.add_runtime_dependency "chronic_duration"
-  s.add_development_dependency
 end
